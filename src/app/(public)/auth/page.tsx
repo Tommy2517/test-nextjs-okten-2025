@@ -1,5 +1,5 @@
 import Form from "next/form";
-import loginAction, {getCokies} from "@/server-actions/serverActions";
+import loginAction from "@/server-actions/serverActions";
 
 const LoginPage = async () => {
     return (
@@ -9,7 +9,7 @@ const LoginPage = async () => {
                 <input type="text" name={'password'}/>
                 <button>send</button>
             </Form>
-            <button onClick={getCokies}>cookie</button>
+            <button>cookie</button>
         </>
     );
 };
