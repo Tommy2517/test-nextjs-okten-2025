@@ -1,6 +1,7 @@
 'use server'
 import {LoginData} from "@/models/LoginDataType";
 import {login} from "@/utils/utils";
+import {setTokenInCookies} from "@/utils";
 
 
 const loginAction = async (formData: FormData) => {
@@ -12,7 +13,7 @@ const loginAction = async (formData: FormData) => {
 
     // const userWithTokens = await loginAuth(authData);
     const userWithTokens = await login(authData);
-    console.log(userWithTokens)
+    await setTokenInCookies(userWithTokens.user.accessToken)
     // redirect('/auth/api');
 };
 

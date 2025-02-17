@@ -20,12 +20,11 @@ export async function POST(req: NextRequest) {
         response.cookies.set({
             name: "token",
             value: data.accessToken, // У dummyjson `data.token`, но у тебя `data.accessToken`
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
+            // httpOnly: true,
+            // secure: process.env.NODE_ENV === "production",
             path: "/",
             maxAge: 60 * 60 * 24, // 1 день
         });
-        console.log(response.headers.get("Set-Cookie"));
         return response;
     } catch (error) {
         console.error("Ошибка авторизации:", error);

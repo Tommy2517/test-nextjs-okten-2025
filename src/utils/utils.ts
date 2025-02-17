@@ -5,10 +5,6 @@ export const login = async (authData:LoginData) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(authData),
-        credentials: "include",
     });
-
-    const data = await res.json();
-    // console.log(data);
-    return data
+    return await res.json();
 };
