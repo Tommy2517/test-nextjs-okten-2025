@@ -1,36 +1,12 @@
 'use server'
 
-import {getCookies, setCookie} from "cookies-next";
+import {setCookie} from "cookies-next";
 import {cookies} from "next/headers";
-import {NextRequest, NextResponse} from "next/server";
-
-export const setDefaultCookies = async ({req, res}: { req: NextRequest, res: NextResponse }) => {
-    await setCookie('test', true, {cookies, res, req})
-    await setCookie('test2', true, {cookies, res, req})
-    await setCookie('test3', true, {cookies, res, req})
-    await setCookie('test4', true, {cookies, res, req})
-    console.log(res,'zzzzzzzzzzzzzzzzzzzzz')
-}
-const defaultCookiesKeys = ['test', 'test2', 'test3', 'test4']
+import {redirect} from "next/navigation";
 
 
 export const setTokenInCookies = async (token:string)=>{
-    console.log(token)
-    await setCookie('token',token,{cookies})
+    await setCookie('token',token,{cookies,maxAge:10});
+    redirect('/')
 }
 
-
-
-
-
-export const isDefaultCookiesExisted = async () => {
-    const allCookies = await getCookies({cookies})
-
-    const existedCookies = Object.keys(typeof allCookies === "object" ? allCookies : {})
-
-    return !defaultCookiesKeys.map(item => {
-        if (!existedCookies.includes(item)) {
-            return false
-        }
-    }).includes(false)
-}

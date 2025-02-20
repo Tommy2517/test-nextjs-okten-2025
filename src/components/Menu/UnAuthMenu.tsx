@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Menu = () => {
+const UnAuthMenu = () => {
     return (
         <div>
             <Link href={'/auth'}>Login</Link>
@@ -8,4 +8,4 @@ const Menu = () => {
     );
 };
 
-export default Menu;
+export default UnAuthMenu;
