@@ -3,9 +3,9 @@ import {getUsers} from "@/service/api.service";
 import {getCookie} from "cookies-next";
 import {cookies} from "next/headers";
 
-export async function GET() {
+export async function GET(req:Request) {
+    console.log('load api router')
     const token = await getCookie('token', {cookies})
     const users = await getUsers(token as string).then(({data}) => data.users)
-
     return NextResponse.json(users)
 }

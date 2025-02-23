@@ -6,16 +6,10 @@ export default async function Home() {
     const headersList = await headers();
     const authStatus = headersList.get('X-Auth-Status');
     console.log(authStatus)
-  // return (
-  //   <div>
-  //       main page
-  //     <UnAuthMenu/>
-  //
-  //   </div>
-  // );
+
     if (authStatus === 'authenticated') {
-        return <div>Добро пожаловать, вы вошли в систему! <AuthMenu/></div>;
+        return <div>Welcome! You are login <AuthMenu/></div>;
     } else {
-        return <div>Пожалуйста, войдите в систему. <UnAuthMenu/> </div>;
+        return <div>Please login. <UnAuthMenu/> </div>;
     }
 }

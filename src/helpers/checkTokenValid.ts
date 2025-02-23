@@ -1,3 +1,3 @@
-export const tokenValidator = async (token:string)=>{
-
-}
+// export const tokenValidator = async (token:string)=>{
+//
+// }

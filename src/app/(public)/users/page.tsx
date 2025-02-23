@@ -9,7 +9,13 @@ const Page = async () => {
     const token = await getCookie('token', {cookies})
     if (!token) redirect('/');
 
-    const response = await fetch('http://localhost:3000/api/users',{headers: { 'Cookie': `token=${token}` }})
+    const response = await fetch('http://localhost:3000/api/users',{
+        headers: {
+            'Cookie': `token=${token}`,
+            'Authorization' : 'tonek'
+        },
+        next:{revalidate:300}
+    })
     const users:IUser[] = await response.json()
     return (
         <div>

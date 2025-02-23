@@ -6,7 +6,7 @@ import {redirect} from "next/navigation";
 
 
 export const setTokenInCookies = async (token:string)=>{
-    await setCookie('token',token,{cookies,maxAge:10});
+    await setCookie('token',token,{cookies,maxAge:300});
     redirect('/')
 }
 
