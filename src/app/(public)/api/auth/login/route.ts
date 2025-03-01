@@ -4,9 +4,9 @@ import {loginAuth} from "@/service/api.service";
 
 export async function POST(req: NextRequest) {
     try {
-        const { username, password, expiresInMinutes }: LoginData = await req.json();
+        const loginData: LoginData = await req.json();
 
-        const {data} = await loginAuth({username,password,expiresInMinutes});
+        const {data} = await loginAuth(loginData);
 
         return NextResponse.json(data);
     } catch (error) {

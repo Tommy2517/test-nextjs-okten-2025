@@ -1,0 +1,5 @@
+users главный запрос
+users/skip/1,2,3... пагинация
+user from users/skip для инфо
+user from api для  рецепта
+

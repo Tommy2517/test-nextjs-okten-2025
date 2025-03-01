@@ -1,25 +1,25 @@
 'use server'
-import UsersList from "@/components/Users/UsersList/UsersList";
 import AuthMenu from "@/components/Menu/AuthMenu";
 import {FC} from "react";
 import {ResponseModelDummyType} from "@/models/ResponseModelDummyType";
 import {SearchParams} from "next/dist/server/request/search-params";
-import {fetchUsers} from "@/lib/api/fetchUsers";
+import {fetchRecipes} from "@/lib/api/fetchRecipes";
+import RecipesList from "@/components/Recipes/RecipesList/RecipesList";
 
 type Props = {
     searchParams: Promise<SearchParams>
 }
 
 const Page: FC<Props> = async ({searchParams}) => {
-    const limit = 30;
+    const limit = 10;
     const {page} = await searchParams
 
-    const {users, total}: ResponseModelDummyType = await fetchUsers({params: {limit, skip: (limit * (Number(page) || 1) - limit)}})
+    const {recipes, total}: ResponseModelDummyType = await fetchRecipes({params: {limit, skip: (limit * (Number(page) || 1) - limit)}})
     return (
         <div>
             <AuthMenu/>
-            usersPage
-            {users && <UsersList users={users} totalPages={Math.ceil(total / limit)} page={Number(page) || 1}/>}
+            recipesPage
+            {recipes && <RecipesList recipes={recipes} totalPages={Math.ceil(total / limit)} page={Number(page) || 1}/>}
         </div>
     );
 };

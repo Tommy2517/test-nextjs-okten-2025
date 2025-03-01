@@ -12,14 +12,21 @@ type Props = {
 
 const Page: FC<Props> = async ({searchParams}) => {
     const limit = 30;
-    const {page} = await searchParams
-
-    const {users, total}: ResponseModelDummyType = await fetchUsers({params: {limit, skip: (limit * (Number(page) || 1) - limit)}})
+    const {page, search} = await searchParams
+    console.log(search,'---search')
+    const {users, total}: ResponseModelDummyType = await fetchUsers({
+        params: {
+            limit,
+            skip: (limit * (Number(page) || 1) - limit),
+            search:search as string
+        }
+    })
     return (
         <div>
             <AuthMenu/>
             usersPage
-            {users && <UsersList users={users} totalPages={Math.ceil(total / limit)} page={Number(page) || 1}/>}
+            {users &&
+                <UsersList users={users} totalPages={Math.ceil(total / limit)} page={Number(page) || 1}/>}
         </div>
     );
 };
