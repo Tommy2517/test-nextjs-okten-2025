@@ -1,0 +1,12 @@
+.header-block {
+    @apply flex justify-between items-center border-2 backdrop-blur-sm border-black rounded-2xl px-10
+}
+.nav-block {
+    @apply flex justify-evenly w-1/2;
+}
+
+.link {
+&:hover{
+    @apply text-black
+}
+}

@@ -4,6 +4,7 @@ import {FC} from "react";
 import Link from "next/link";
 import {useSearchParams} from "next/navigation";
 import SearchForm from "@/components/SearchForm/SearchForm";
+import UserCard from "@/components/Users/UserCard/UserCard";
 
 type Props = {
     users: IUser[]
@@ -16,28 +17,27 @@ const UsersList: FC<Props> = ({users, totalPages, page}) => {
     let paginationUrl = ''
     let userLinkUrl = ''
     if (searchParams.has('search')) {
-        paginationUrl = '/users/search?search=' + searchParams.get('search')+'&page='
+        paginationUrl = '/users/search?search=' + searchParams.get('search') + '&page='
         userLinkUrl = '&search=' + searchParams.get('search')
-    }
-    else {
+    } else {
         paginationUrl = '/users?page='
     }
-    console.log(paginationUrl ,'--- users list')
+    console.log(paginationUrl, '--- users list')
 
     return (
-        <div>
+        <div className={'border-2 backdrop-blur-sm border-black rounded-2xl px-10'}>
             <SearchForm url={'/users/search'}/>
 
             <div>
-                {page > 1 && <Link href={paginationUrl + (page-1)}>Prev</Link>}
-                -------
-                {page < totalPages && <Link href={paginationUrl + (page+1)}>Next</Link>}
-                {page}---{totalPages}
+                {page > 1 && <Link href={paginationUrl + (page - 1)}>{'< Prev'}</Link>}
+                <span>  {page}---{totalPages}  </span>
+                {page < totalPages && <Link href={paginationUrl + (page + 1)}>{'Next >'}</Link>}
             </div>
-            <div>
-            </div>
-            {users.map(user => <div key={user.id}><Link href={`/users/${user.id}?page=${page}${userLinkUrl}`}>{user.username}</Link>
-            </div>)}
+            <div className={' flex flex-wrap -m-2'}>{users.map(user =>
+                <div className={'p-2 lg:w-1/3 md:w-1/2 w-full'} key={user.id}><Link href={`/users/${user.id}?page=${page}${userLinkUrl}`}>
+                    <UserCard user={user}/></Link>
+                </div>)
+            }</div>
         </div>
     );
 };

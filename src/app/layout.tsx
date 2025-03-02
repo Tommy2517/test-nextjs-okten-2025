@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
 import "./globals.css";
 import React from "react";
+import './page.css'
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -10,25 +11,9 @@ export const metadata: Metadata = {
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
   return (
     <html lang="en">
-      <body>
+      <body  className={'bg h-max w-max'}>
         {children}
       </body>
     </html>
   );
 }
-
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//

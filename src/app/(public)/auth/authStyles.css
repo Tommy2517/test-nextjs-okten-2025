@@ -1,0 +1,3 @@
+.form-block {
+    @apply flex flex-col gap-3 justify-evenly border-2 backdrop-blur-md bg-black/50 border-black rounded-2xl px-10 w-1/2
+}

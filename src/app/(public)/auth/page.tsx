@@ -1,20 +1,19 @@
 import Form from "next/form";
 import {loginAction} from "@/server-actions/serverActions";
-// import {ResponseModelDummyType} from "@/models/ResponseModelDummyType";
 
+import './authStyles.css'
 const LoginPage = async () => {
 
 
 
     return (
-        <>
-
-            <Form action={loginAction} className={'flex flex-col w-32 gap-3 text-red-400'}>
+        <div className={'flex justify-center'}>
+            <Form action={loginAction} className={'form-block'}>
                 <input type="text" required={true} name={'username'}/>
                 <input type="text" name={'password'}/>
-                <button>send</button>
+                <button>Login</button>
             </Form>
-        </>
+        </div>
     );
 };
 export default LoginPage

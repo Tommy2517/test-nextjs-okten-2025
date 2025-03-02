@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const UnAuthMenu = () => {
     return (
-        <div>
+        <div className={'header-block'}>
             <Link href={'/auth'}>Login</Link>
         </div>
     );

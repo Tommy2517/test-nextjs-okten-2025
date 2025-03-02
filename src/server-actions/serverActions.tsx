@@ -1,7 +1,7 @@
 'use server'
 import {LoginData} from "@/models/LoginDataType";
 import {IUserWithTokens} from "@/models/IUserWithTokens";
-import {setTokenInCookies} from "@/utils";
+import {setAuthUser, setTokenInCookies} from "@/utils";
 
 
 export const loginAction = async (formData: FormData) => {
@@ -12,11 +12,13 @@ export const loginAction = async (formData: FormData) => {
     }
     const res = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify(loginData),
     });
 
-    const userWithTokens:IUserWithTokens = await res.json();
+    const userWithTokens: IUserWithTokens = await res.json();
+
+    await setAuthUser(userWithTokens)
 
     await setTokenInCookies(userWithTokens.accessToken)
 };
