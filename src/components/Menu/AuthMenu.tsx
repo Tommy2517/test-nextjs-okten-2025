@@ -13,8 +13,8 @@ const AuthMenu= () => {
             <Image src={user.image} width={'50'} height={'50'} alt={user.username}/>
             <div className={'nav-block'}>
                 <Link className={'link'} href={'/'}>home</Link>
-                <Link className={'link'} href={'http://localhost:3000/users'}>users</Link>
-                <Link className={'link'} href={'http://localhost:3000/recipes'}>recipes</Link>
+                <Link className={'link'} href={'/users'}>users</Link>
+                <Link className={'link'} href={'/recipes'}>recipes</Link>
             </div>
             <Link className={''} href={'/api/auth/logout'}>LogOut</Link>
         </div>
