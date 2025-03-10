@@ -7,7 +7,7 @@ import {IUserWithTokens} from "@/models/IUserWithTokens";
 
 
 export const setAuthUser = async (user: IUserWithTokens) => {
-    const  {accessToken, refreshToken, ...userWithoutTokens} = user
+    const  {...userWithoutTokens} = user
     await setCookie('authUser' ,JSON.stringify(userWithoutTokens), {cookies, maxAge: Number(process.env.TOKEN_EXPIRES_MIN) * 60 || 60})
 }
 export const setTokenInCookies = async (token: string | undefined) => {

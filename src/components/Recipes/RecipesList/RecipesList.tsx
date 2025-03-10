@@ -1,5 +1,4 @@
 'use client'
-import {IUser} from "@/models/IUser";
 import {FC} from "react";
 import Link from "next/link";
 import {useSearchParams} from "next/navigation";

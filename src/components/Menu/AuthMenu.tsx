@@ -6,7 +6,8 @@ import {getCookie} from "cookies-next";
 
 const AuthMenu= () => {
     const authUser = getCookie('authUser')
-    const user = authUser && JSON.parse( authUser)
+    // const user = authUser && JSON.parse( authUser)
+    const user = authUser && typeof authUser === 'string' ? JSON.parse(authUser) : null;
     return (
         <div className={'header-block'}>
             <Image src={user.image} width={'50'} height={'50'} alt={user.username}/>

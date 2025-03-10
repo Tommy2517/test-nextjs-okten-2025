@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from "axios";
+import {AxiosResponse} from "axios";
 import {LoginData} from "@/models/LoginDataType";
 import {IUserWithTokens} from "@/models/IUserWithTokens";
 import {ResponseModelDummyType} from "@/models/ResponseModelDummyType";
